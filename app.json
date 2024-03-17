@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "TUPT-Scheduler",
+    "slug": "TUPT-Scheduler",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/tup.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/tup.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/tup.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/tup.png"
+    }
+  }
+}

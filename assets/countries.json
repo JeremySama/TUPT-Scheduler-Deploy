@@ -1,0 +1,17 @@
+[ 
+    {"name": "Caloocan City", "code": "AF"}, 
+    {"name": "Las Pinas City", "code": "AX"}, 
+    {"name": "Makati City", "code": "AL"}, 
+    {"name": "Mandaluyong City", "code": "DZ"}, 
+    {"name": "Manila City", "code": "AS"}, 
+    {"name": "Marikina City", "code": "AD"}, 
+    {"name": "Muntinlupa City", "code": "AO"}, 
+    {"name": "Navotas City", "code": "AI"}, 
+    {"name": "Parañaque City", "code": "AQ"}, 
+    {"name": "Pasay City", "code": "AG"}, 
+    {"name": "Pasig City", "code": "AR"}, 
+    {"name": "Quezon City", "code": "AM"}, 
+    {"name": "San Juan City", "code": "AW"}, 
+    {"name": "Taguig City", "code": "AU"}, 
+    {"name": "Valenzuela City", "code": "AT"}
+  ]
