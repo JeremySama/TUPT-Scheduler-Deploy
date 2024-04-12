@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/tup.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.cabudbudjeremy.TUPTScheduler"
     },
     "web": {
       "favicon": "./assets/tup.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "8a97ad43-5ce3-4015-8534-f1735118f13d"
+      }
     }
   }
 }
