@@ -11,6 +11,8 @@ import {
 import { Container, Input, VStack, Center, Toast } from "native-base";
 import Icon from "react-native-vector-icons/FontAwesome";
 import CalendarList from "./CalendarList";
+import ExternalCalendarlist from "./ExternalCalendarlist";
+
 import SearchedCalendar from "./SearchedCalendar";
 import Banner from "../../Shared/Banner";
 import baseURL from "../../assets/common/baseUrl";
@@ -35,6 +37,8 @@ const CalendarContainer = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const navigation = useNavigation();
+  const [externalCalendars, setExternalCalendars] = useState([]);
+
   const context = useContext(AuthGlobal);
   const searchCalendar = (text) => {
     setCalendarsFiltered(
@@ -96,6 +100,23 @@ const CalendarContainer = () => {
       .catch((error) => {
         console.log("API call error", error);
       });
+
+
+      // Fetch all calendars again
+    axios
+    .get(`https://calendash.online/api/getAllCalendars`)
+    .then((res) => {
+      setExternalCalendars(
+        res.data.filter(
+          (externalCalendar) =>
+          externalCalendar.status === "APPROVED" 
+        )
+      );
+      setLoading(false);
+    })
+    .catch((error) => {
+      console.log("API call error", error);
+    });
   };
 
   useFocusEffect(
@@ -120,9 +141,26 @@ const CalendarContainer = () => {
           console.log("API call error");
         });
 
+         // Fetch all calendars again
+    axios
+    .get(`https://calendash.online/api/getAllCalendars`)
+    .then((res) => {
+      setExternalCalendars(
+        res.data.filter(
+          (externalCalendar) =>
+          externalCalendar.status === "APPROVED" 
+        )
+      );
+      setLoading(false);
+    })
+    .catch((error) => {
+      console.log("API call error", error);
+    });
+
       return () => {
         setCalendars([]);
         setCalendarsFiltered([]);
+        setExternalCalendars([]);
         setFocus();
         setInitialState();
       };
@@ -385,6 +423,22 @@ const CalendarContainer = () => {
                 <View style={styles.listContainer}>
                   {calendarsFiltered.map((item) => {
                     return <CalendarList key={item._id.$oid} item={item} />;
+                  })}
+                </View>
+              ) : (
+                <View
+                  style={[
+                    styles.center,
+                    { height: height / 2, backgroundColor: "white" },
+                  ]}
+                >
+                  <Text>No calendars found</Text>
+                </View>
+              )}
+              {externalCalendars.length > 0 ? (
+                <View style={styles.listContainer}>
+                  {externalCalendars.map((item) => {
+                    return <ExternalCalendarlist key={item._id} item={item} />;
                   })}
                 </View>
               ) : (
