@@ -1,0 +1,5 @@
+npm install
+npm install expo
+
+local.properties
+sdk.dir=C:\\Users\\asus TUF GAMING\\AppData\\Local\\Android\\Sdk
