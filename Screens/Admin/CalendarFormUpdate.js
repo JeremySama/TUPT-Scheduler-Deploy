@@ -387,6 +387,8 @@ const handleCheckboxChange = () => {
         <Select.Item label="Denied" value="Denied" />
         <Select.Item label="PE Class" value="PE Class" />
         <Select.Item label="Moved" value="Moved" />
+        <Select.Item label="On Process" value="On Process" />
+
       </Select>
       <Text style={styles.label}>Location</Text>
       <Select

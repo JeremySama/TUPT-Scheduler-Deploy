@@ -29,7 +29,7 @@ const issues = [
   "Incomplete Sets",
   "Incorrect Use or Mishandling",
   "Stolen or Unreturned Items",
-  "Overdue",
+  "On Process",
 ];
 
 const formatDate = (date) => {
