@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { View, StyleSheet, Dimensions, ScrollView, TouchableOpacity} from "react-native";
-import { Text, HStack, VStack, Avatar, Spacer } from "native-base";
+import { View, StyleSheet, Dimensions, ScrollView, TouchableOpacity, Modal, Alert } from "react-native";
+import { Text, HStack, VStack, Avatar, Spacer, Button } from "native-base";
 
 import * as actions from "../../../Redux/Actions/borrowActions";
 
@@ -16,53 +16,57 @@ var { width, height } = Dimensions.get("window");
 
 const Confirm = (props) => {
   const [token, setToken] = useState();
+  const [showConfirmation, setShowConfirmation] = useState(false); // State for confirmation dialog
   const finalBorrow = props.route.params;
   const dispatch = useDispatch()
   const navigation = useNavigation();
 
-  
   const confirmBorrow = () => {
-    const borrow = finalBorrow.borrow;
-    
-    AsyncStorage.getItem("jwt")
-      .then((res) => {
-        setToken(res)
+    // Execute only if the user confirms terms and agreement
+    if (showConfirmation) {
+      const borrow = finalBorrow.borrow;
 
-      })
-      .catch((error) => console.log(error))
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`
+      AsyncStorage.getItem("jwt")
+        .then((res) => {
+          setToken(res)
+
+        })
+        .catch((error) => console.log(error))
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       }
-    }
-    axios
-      .post(`${baseURL}borrows`, borrow, config)
-      .then((res) => {
-        if (res.status == 200 || res.status == 201) {
+      axios
+        .post(`${baseURL}borrows`, borrow, config)
+        .then((res) => {
+          if (res.status == 200 || res.status == 201) {
+            Toast.show({
+              topOffset: 60,
+              type: "success",
+              text1: "Borrow Completed",
+              text2: "",
+            });
+            setTimeout(() => {
+              dispatch(actions.clearBorrow())
+              navigation.navigate("Borrow");
+            }, 500);
+          }
+        })
+        .catch((error) => {
           Toast.show({
             topOffset: 60,
-            type: "success",
-            text1: "Borrow Completed",
-            text2: "",
+            type: "error",
+            text1: "Something went wrong",
+            text2: "Please try again",
           });
-          // dispatch(actions.clearCart())
-          // props.navigation.navigate("Cart")
-
-          setTimeout(() => {
-            dispatch(actions.clearBorrow())
-            navigation.navigate("Borrow");
-          }, 500);
-        }
-      })
-      .catch((error) => {
-        Toast.show({
-          topOffset: 60,
-          type: "error",
-          text1: "Something went wrong",
-          text2: "Please try again",
         });
-      });
+    } else {
+      // Show confirmation dialog
+      setShowConfirmation(true);
+    }
   }
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.titleContainer}>
@@ -83,11 +87,11 @@ const Confirm = (props) => {
 
                 <HStack space={[2, 3]} justifyContent="space-between" key={item.id}>
                   <Avatar
-            size="48px"
-            source={{
-              uri: item.images.length > 0 ? item.images[0].url : "https://cdn.pixabay.com/photo/2012/04/01/17/29/box-23649_960_720.png",
-            }}
-          />
+                    size="48px"
+                    source={{
+                      uri: item.images.length > 0 ? item.images[0].url : "https://cdn.pixabay.com/photo/2012/04/01/17/29/box-23649_960_720.png",
+                    }}
+                  />
                   <VStack>
                     <Text _dark={{
                       color: "warmGray.50"
@@ -120,12 +124,27 @@ const Confirm = (props) => {
         >
           <Text style={{ fontSize: 18, fontWeight: 'bold', color: 'white' }}>Confirm</Text>
         </TouchableOpacity>
-          {/* <Button title={"Place order"} onPress={confirmOrder} /> */}
+      </View>
+
+      {/* Confirmation Dialog */}
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={showConfirmation}
+        onRequestClose={() => setShowConfirmation(false)}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Do you agree to the terms and conditions?</Text>
+            <Button onPress={() => setShowConfirmation(false)}>Cancel</Button>
+            <Button onPress={() => confirmBorrow()}>Agree</Button>
+          </View>
         </View>
+      </Modal>
     </ScrollView>
   )
-
 }
+
 const styles = StyleSheet.create({
   container: {
     height: height,
@@ -155,5 +174,32 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
   },
+  // Confirmation Dialog styles
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center"
+  }
 });
+
 export default Confirm;
