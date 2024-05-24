@@ -102,7 +102,7 @@ const Equipments = (props) => {
 
   return (
     <Box flex={1}>
-      <View>
+      <View style={{ backgroundColor: "maroon" }}>
         <ScrollView horizontal={true} style={styles.buttonContainer}>
         <EasyButton
             secondary
@@ -125,7 +125,7 @@ const Equipments = (props) => {
             medium
             onPress={() => navigation.navigate("EquipmentForm")}
           >
-            <Icon name="plus" size={18} color="white" />
+            <Icon name="plus" size={18} color="black" />
             <Text style={styles.buttonText}>Equipment</Text>
           </EasyButton>
           <EasyButton
@@ -133,15 +133,15 @@ const Equipments = (props) => {
             medium
             onPress={() => navigation.navigate("EquipmentLogs")}
           >
-            <Icon name="file-text" size={18} color="white" />
-            <Text style={styles.buttonText}>Equipment Logs</Text>
+            <Icon name="file-text" size={18} color="black" />
+            <Text style={styles.buttonText}>Equip-Logs</Text>
           </EasyButton>
           <EasyButton
             secondary
             medium
             onPress={() => navigation.navigate("EquipmentStockLogs")}
           >
-            <Icon name="file-text" size={18} color="white" />
+            <Icon name="file-text" size={18} color="black" />
             <Text style={styles.buttonText}>Stocks Log</Text>
           </EasyButton>
           <EasyButton
@@ -149,7 +149,7 @@ const Equipments = (props) => {
             medium
             onPress={() => navigation.navigate("Products")}
           >
-            <Icon name="shopping-cart" size={18} color="white" />
+            <Icon name="shopping-cart" size={18} color="black" />
             <Text style={styles.buttonText}>Product</Text>
           </EasyButton>
           <EasyButton
@@ -157,7 +157,7 @@ const Equipments = (props) => {
             medium
             onPress={() => navigation.navigate("Calendars")}
           >
-            <Icon name="calendar" size={18} color="white" />
+            <Icon name="calendar" size={18} color="black" />
             <Text style={styles.buttonText}>Calendar</Text>
           </EasyButton>
           <EasyButton
@@ -165,7 +165,7 @@ const Equipments = (props) => {
             medium
             onPress={() => navigation.navigate("Users")}
           >
-            <Icon name="user" size={18} color="white" />
+            <Icon name="user" size={18} color="black" />
             <Text style={styles.buttonText}>Users</Text>
           </EasyButton>
           <EasyButton
@@ -173,7 +173,7 @@ const Equipments = (props) => {
             medium
             onPress={() => navigation.navigate("Sports")}
           >
-            <Icon name="list" size={18} color="white" />
+            <Icon name="list" size={18} color="black" />
             <Text style={styles.buttonText}>Sports</Text>
           </EasyButton>
         </ScrollView>

@@ -119,7 +119,7 @@ const Users = (props) => {
 
   return (
     <Box flex={1}>
-      <View>
+      <View style={{ backgroundColor: "maroon" }}>
         <ScrollView horizontal={true} style={styles.buttonContainer}>
 
           <EasyButton
@@ -127,7 +127,7 @@ const Users = (props) => {
             medium
             onPress={() => navigation.navigate("Products")}
           >
-            <Icon name="shopping-cart" size={18} color="white" />
+            <Icon name="shopping-cart" size={18} color="black" />
             <Text style={styles.buttonText}>Product</Text>
           </EasyButton>
           <EasyButton
@@ -135,7 +135,7 @@ const Users = (props) => {
             medium
             onPress={() => navigation.navigate("Calendars")}
           >
-            <Icon name="calendar" size={18} color="white" />
+            <Icon name="calendar" size={18} color="black" />
             <Text style={styles.buttonText}>Calendar</Text>
           </EasyButton>
           <EasyButton
@@ -143,7 +143,7 @@ const Users = (props) => {
             medium
             onPress={() => navigation.navigate("Equipments")}
           >
-            <Icon name="archive" size={18} color="white" />
+            <Icon name="archive" size={18} color="black" />
             <Text style={styles.buttonText}>Equipment</Text>
           </EasyButton>
         </ScrollView>

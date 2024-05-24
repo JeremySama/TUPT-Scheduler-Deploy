@@ -277,7 +277,7 @@ const Calendars = (props) => {
 
   return (
     <Box flex={1}>
-      <View>
+      <View style={{ backgroundColor: "maroon" }}>
         <ScrollView horizontal={true} style={styles.buttonContainer}>
 
           <EasyButton
@@ -285,7 +285,7 @@ const Calendars = (props) => {
             medium
             onPress={() => navigation.navigate("CalendarForm")}
           >
-            <Icon name="plus" size={15} color="white" />
+            <Icon name="plus" size={15} color="black" />
             <Text style={styles.buttonText}>Calendar</Text>
           </EasyButton>
           <EasyButton
@@ -293,7 +293,7 @@ const Calendars = (props) => {
             medium
             onPress={() => navigation.navigate("Products")}
           >
-            <Icon name="shopping-cart" size={18} color="white" />
+            <Icon name="shopping-cart" size={18} color="black" />
             <Text style={styles.buttonText}>Product</Text>
           </EasyButton>
           <EasyButton
@@ -301,7 +301,7 @@ const Calendars = (props) => {
             medium
             onPress={() => navigation.navigate("Equipments")}
           >
-            <Icon name="archive" size={18} color="white" />
+            <Icon name="archive" size={18} color="black" />
             <Text style={styles.buttonText}>Equipment</Text>
           </EasyButton>
           <EasyButton
@@ -309,7 +309,7 @@ const Calendars = (props) => {
             medium
             onPress={() => navigation.navigate("Users")}
           >
-            <Icon name="user" size={18} color="white" />
+            <Icon name="user" size={18} color="black" />
             <Text style={styles.buttonText}>User</Text>
           </EasyButton>
           <EasyButton
@@ -317,11 +317,11 @@ const Calendars = (props) => {
             medium
             onPress={() => navigation.navigate("Locations")}
           >
-            <Icon name="location-arrow" size={18} color="white" />
+            <Icon name="location-arrow" size={18} color="black" />
             <Text style={styles.buttonText}>Location</Text>
           </EasyButton>
           <EasyButton secondary medium onPress={() => openModal()}>
-            <Icon name="cog" size={18} color="white" />
+            <Icon name="cog" size={18} color="black" />
             <Text style={styles.buttonText}>Setting</Text>
           </EasyButton>
           <EasyButton
@@ -329,7 +329,7 @@ const Calendars = (props) => {
             medium
             onPress={() => navigation.navigate("CalendarLogs")}
           >
-            <Icon name="file-text" size={18} color="white" />
+            <Icon name="file-text" size={18} color="black" />
             <Text style={styles.buttonText}>logs</Text>
           </EasyButton>
         </ScrollView>

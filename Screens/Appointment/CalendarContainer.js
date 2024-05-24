@@ -372,7 +372,7 @@ const CalendarContainer = () => {
                 onPress={generatePdf}
                 style={{ backgroundColor: "blue", elevation: 12 }}
               >
-                <Icons name="plus" size={15} color="white" />
+                <Icons name="file-o" size={15} color="white" />
                 <Text style={styles.buttonText}>Print</Text>
               </EasyButton>
             <StatusBar style="auto" />

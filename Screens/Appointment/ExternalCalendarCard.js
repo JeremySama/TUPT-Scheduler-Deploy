@@ -21,13 +21,13 @@ const ExternalCalendarCard = (props) => {
                 TITLE:
             </Text>
             <Text style={styles.description}>
-                {event_name.length > 15 ? event_name.substring(0, 15 - 3) + '...' : event_name}
+            {(event_name?.length ?? 0) > 15 ? event_name.substring(0, 12) + '...' : (event_name ?? 'Unnamed Event')}
             </Text>
             <Text style={styles.title}>
                 Description:
             </Text>
             <Text style={styles.description}>
-                {organization.length > 30 ? organization.substring(0, 30 - 3) + '...' : organization}
+            {(organization?.length ?? 0) > 30 ? organization.substring(0, 27) + '...' : (organization ?? 'Unnamed Organization')}
             </Text>
             <Text style={styles.title}>
                 Date:

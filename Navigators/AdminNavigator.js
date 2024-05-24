@@ -40,12 +40,10 @@ function MyStack() {
                         color: 'white',
                         textTransform: 'uppercase',
                         fontWeight: 'bold',
-
                     },
                     headerStyle: {
                         backgroundColor: "maroon", // Set your desired background color
                         height: 50, // Adjust the height of the header as needed
-
                     },
                 }}
 

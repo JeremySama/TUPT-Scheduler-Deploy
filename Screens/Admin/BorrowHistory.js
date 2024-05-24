@@ -10,14 +10,12 @@ import {
 
 } from "react-native";
 import { Box } from "native-base";
-import Icon from "react-native-vector-icons/FontAwesome";
 import { useFocusEffect } from "@react-navigation/native";
 import { Searchbar } from "react-native-paper";
 import ListItem from "./BorrowHistoryItems";
 import axios from "axios";
 import baseURL from "../../assets/common/baseUrl";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import EasyButton from "../../Shared/StyledComponents/EasyButtons";
 import { useNavigation } from "@react-navigation/native";
 import { Picker } from "@react-native-picker/picker"; // Import Picker from @react-native-picker/picker
 var { height, width } = Dimensions.get("window");
